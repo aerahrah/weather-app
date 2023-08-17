@@ -5,7 +5,7 @@ export const getWeatherForecast = async (lat, lon, api_key) => {
     const response = await Axios.get(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`
     );
-    console.log(response);
+    return response.data;
   } catch (err) {
     console.error(err);
   }
