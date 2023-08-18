@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getCityMeridian, getWeatherForecast } from "./api/weather_api";
 import { convertTimestamp } from "./convertTimestamp";
+import Header from "./header/header";
 import Footer from "./footer";
 const WeatherApp = () => {
-  const api_key = import.meta.env.VITE_API_KEY;
   const [cityName, setCityName] = useState("");
   const [weatherForecast, setWeatherForecast] = useState({
     weather: [],
-    country: "",
+    main: [],
+    sys: [],
     cityName: "",
-    temp: "",
-    humidity: "",
-    min_temp: "",
-    max_temp: "",
     dayName: "",
   });
   const [meridian, setMeridian] = useState({
@@ -21,14 +18,12 @@ const WeatherApp = () => {
   });
 
   const handleSubmitInputCity = () => {
-    getCityMeridian(cityName, api_key)
+    getCityMeridian(cityName)
       .then((data) => {
         console.log(data[0]);
         setMeridian({
           lat: data[0].lat,
           lon: data[0].lon,
-          state: data[0].state,
-          country: data[0].country,
         });
       })
       .catch((err) => {
@@ -38,17 +33,19 @@ const WeatherApp = () => {
 
   useEffect(() => {
     if (meridian.lat && meridian.lon) {
-      getWeatherForecast(meridian.lat, meridian.lon, api_key)
+      getWeatherForecast(meridian.lat, meridian.lon)
         .then((data) => {
           console.log(data);
-          const weatherData = data.weather[0];
-
+          console.log(data.sys.country);
           setWeatherForecast((prevForecast) => ({
             ...prevForecast,
-            weather: [weatherData],
+            weather: [data.weather[0]],
+            sys: [data.sys],
+            main: [data.main],
+            cityName: data.name,
             dayName: convertTimestamp(data.dt),
           }));
-          console.log(weatherData);
+          console.log(weatherForecast.main[0].temp);
         })
         .catch((err) => {
           console.log(err);
@@ -58,37 +55,26 @@ const WeatherApp = () => {
 
   return (
     <div className="flex flex-col bg-gray-100 justify-center items-center min-h-[100vh]">
+      <Header
+        cityName={cityName}
+        setCityName={setCityName}
+        handleSubmitInputCity={handleSubmitInputCity}
+      />
+
       <div className="bg-white p-6 rounded-lg shadow-md ">
-        <div className="border-[1px] px-2 mb-4">
-          <input
-            className="outline-0 min-w-[15rem] "
-            type="text"
-            value={cityName}
-            placeholder="Enter city name..."
-            onChange={(e) => setCityName(e.target.value)}
-          />
-          <button
-            className="border-l-[1px] p-2"
-            onClick={handleSubmitInputCity}
-          >
-            submit
-          </button>
-        </div>
-        <div>
-          {meridian.lat && (
-            <ul>
-              <li>Latitude: {meridian.lat}</li>
-              <li>Longitude: {meridian.lon}</li>
-            </ul>
-          )}
-        </div>
         <div>
           {weatherForecast.weather.length > 0 && (
             <ul>
               <li>Description: {weatherForecast.weather[0].description}</li>
               <li>Icon: {weatherForecast.weather[0].icon}</li>
               <li>Main: {weatherForecast.weather[0].main}</li>
-              <li>Day Name: {weatherForecast.dayName}</li>
+              <li>Day Name: {weatherForecast.sys[0].country}</li>
+              <div>
+                <img
+                  src={`https://openweathermap.org/img/wn/${weatherForecast.weather[0].icon}@2x.png`}
+                  alt=""
+                />
+              </div>
             </ul>
           )}
         </div>
