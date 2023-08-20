@@ -3,7 +3,7 @@ import { getCityMeridian } from "../api/weather_api";
 import { Combobox } from "@headlessui/react";
 import debounce from "lodash/debounce";
 
-const SearchCityName = () => {
+const SearchCityName = ({ handleOnSearchChange }) => {
   const [cityName, setCityName] = useState("");
   const [cityDetails, setCityDetails] = useState(null);
 
@@ -29,6 +29,7 @@ const SearchCityName = () => {
       className="cursor-pointer hover:bg-green-300 p-1 px-2"
       key={city.id}
       value={city.city}
+      onClick={() => handleOnSearchChange(city.values)}
     >
       {city.city}
     </Combobox.Option>
