@@ -24,10 +24,12 @@ const WeatherApp = () => {
   };
 
   return (
-    <div className="flex flex-col bg-gray-100 justify-center items-center min-h-[100vh]">
+    <div className="flex flex-col bg-blue-50 justify-center items-center min-h-[100vh]">
       <Header handleOnSearchChange={handleOnSearchChange} />
-      <CurrentWeather currentWeatherData={currentWeather} />
-
+      <div className="flex gap-10">
+        <CurrentWeather currentWeatherData={currentWeather} />
+        <div className="w-[30vw]">haha</div>
+      </div>
       <Footer />
     </div>
   );
