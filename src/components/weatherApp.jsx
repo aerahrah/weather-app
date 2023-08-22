@@ -24,16 +24,17 @@ const WeatherApp = () => {
       setCurrentWeather(currentWeatherForecast);
       setWeatherForecast(weatherForecast);
       setAirQualityData(airQualityData.list[0]);
+      console.log(airQualityData.list[0]);
     });
   };
 
   return (
-    <div className="flex flex-col bg-blue-50 justify-center items-center min-h-[100vh]">
+    <div className="relative bg-blue-50 items-center min-h-[100vh] pb-16">
       <Header handleOnSearchChange={handleOnSearchChange} />
-      <div className="grid grid-cols-2">
+      <div className="md:grid md:grid-cols-2 gap-8 w-[80vw] mx-auto pt-36">
         <CurrentWeather currentWeatherData={currentWeather} />
-        <AirQualityIndex airQualityData={airQualityData} />
         <div className="w-[30vw] row-span-2">haha</div>
+        <AirQualityIndex airQualityData={airQualityData} />
       </div>
       <Footer />
     </div>

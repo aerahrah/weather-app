@@ -14,9 +14,12 @@ const SearchCityName = ({ handleOnSearchChange }) => {
           .then((data) => {
             const response = data.map((data, idx) => ({
               id: idx,
-              city: `${data.name}, ${data.country}`,
+              city: `${data.name}${data.state ? ", " + data.state : ""}, ${
+                data.country
+              }`,
               values: `${data.lat} ${data.lon}`,
             }));
+
             setCityDetails(response);
           })
           .catch((err) => {
@@ -30,7 +33,10 @@ const SearchCityName = ({ handleOnSearchChange }) => {
       className="cursor-pointer hover:bg-blue-200 p-1 px-6 border-b-[1px] border-blue-100"
       key={city.id}
       value={city.city}
-      onClick={() => handleOnSearchChange(city.values)}
+      onClick={() => {
+        handleOnSearchChange(city.values);
+        setCityName(city.city);
+      }}
     >
       {city.city}
     </Combobox.Option>

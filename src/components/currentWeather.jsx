@@ -19,18 +19,20 @@ const CurrentWeather = ({ currentWeatherData }) => {
   } = currentWeatherData;
 
   return (
-    <div className="bg-white p-10 rounded-xl shadow-md grid grid-cols-2 gap-x-12 gap-y-8 text-lg text-gray-500 ">
+    <div className="bg-white p-10 rounded-xl shadow-md grid grid-cols-2 gap-x-12 gap-y-6 text-lg text-gray-500 ">
       <div className="col-span-2">
-        <p className="text-gray-500 font-semibold text-lg">Current Weather</p>
-        <div className="flex items-center gap-2">
-          <MdCalendarToday />
-          <p className="text-sm">{convertTimestamp(dt)}</p>
-        </div>
+        <p className="font-semibold ">Today's Weather</p>
       </div>
       <div className="flex flex-col gap-10">
-        <div className="flex items-center gap-2">
-          <MdLocationOn />
-          <h2 className="font-semibold">{`${name}, ${country}`}</h2>
+        <div>
+          <div className="flex items-center gap-2">
+            <MdLocationOn />
+            <h2 className="font-semibold">{`${name}, ${country}`}</h2>
+          </div>
+          <div className="flex items-center gap-2 mt-1">
+            <MdCalendarToday />
+            <p className="text-sm">{convertTimestamp(dt)}</p>
+          </div>
         </div>
 
         <div className="flex gap-4 items-center">
@@ -85,12 +87,13 @@ const CurrentWeather = ({ currentWeatherData }) => {
   );
 };
 
-const TableRow = ({ icon, label, value }) => (
-  <tr>
-    <td className="pr-2 text-sm">{icon}</td>
-    <td className="w-24">{label}</td>
-    <td className="text-sky-600">{value}</td>
-  </tr>
-);
-
+const TableRow = ({ icon, label, value }) => {
+  return (
+    <tr>
+      <td className="pr-2 text-sm">{icon}</td>
+      <td className="w-24">{label}</td>
+      <td className="text-sky-600">{value}</td>
+    </tr>
+  );
+};
 export default CurrentWeather;

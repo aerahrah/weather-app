@@ -23,3 +23,18 @@ export const convertTimestamp = (dt) => {
 
   return `${dayName} ${day}, ${month}`;
 };
+
+export const aqiCheck = (aqi) => {
+  switch (aqi) {
+    case 1:
+      return <p className="bg-green-400 rounded-full py-1 px-4">Good</p>;
+    case 2:
+      return <p className="bg-green-300 rounded-full py-1 px-4">Fair</p>;
+    case 3:
+      return <p className="bg-yellow-300 rounded-full py-1 px-4">Moderate</p>;
+    case 4:
+      return <p className="bg-orange-300 rounded-full py-1 px-4">Poor</p>;
+    case 5:
+      return <p className="bg-red-300 rounded-full py-1 px-4">Very Poor</p>;
+  }
+};
