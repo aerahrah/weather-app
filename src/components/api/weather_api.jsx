@@ -25,7 +25,17 @@ export const getWeatherForecast = async (lat, lon) => {
     console.error(err);
   }
 };
+export const getAirQualityIndex = async (lat, lon) => {
+  try {
+    const response = await Axios.get(
+      `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`
+    );
 
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
 export const getCityMeridian = async (cityName) => {
   try {
     const response = await Axios.get(
