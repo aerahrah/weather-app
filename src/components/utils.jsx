@@ -38,3 +38,16 @@ export const aqiCheck = (aqi) => {
       return <p className="bg-red-300 rounded-full py-1 px-4">Very Poor</p>;
   }
 };
+
+export const filterData = (data) => {
+  let groupedData = [];
+  let daysDataFirstValues = [];
+
+  if (data) {
+    for (let i = 0; i < data.length; i += 7) {
+      groupedData.push(data.slice(i, i + 7));
+    }
+    groupedData = groupedData.slice(1);
+    return (daysDataFirstValues = groupedData.map((daysData) => daysData[0]));
+  }
+};

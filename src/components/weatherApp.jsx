@@ -6,6 +6,7 @@ import {
 } from "./api/weather_api";
 import CurrentWeather from "./currentWeather";
 import AirQualityIndex from "./airQualityIndex";
+import ForecastWeather from "./forecastWeather";
 import Header from "./header/header";
 import Footer from "./footer";
 
@@ -22,9 +23,9 @@ const WeatherApp = () => {
       getAirQualityIndex(lat, lon),
     ]).then(([currentWeatherForecast, weatherForecast, airQualityData]) => {
       setCurrentWeather(currentWeatherForecast);
-      setWeatherForecast(weatherForecast);
+      setWeatherForecast(weatherForecast.list);
       setAirQualityData(airQualityData.list[0]);
-      console.log(airQualityData.list[0]);
+      console.log(weatherForecast);
     });
   };
 
@@ -33,7 +34,7 @@ const WeatherApp = () => {
       <Header handleOnSearchChange={handleOnSearchChange} />
       <div className="md:grid md:grid-cols-2 gap-8 w-[80vw] mx-auto pt-36">
         <CurrentWeather currentWeatherData={currentWeather} />
-        <div className="w-[30vw] row-span-2">haha</div>
+        <ForecastWeather forecastWeatherData={weatherForecast} />
         <AirQualityIndex airQualityData={airQualityData} />
       </div>
       <Footer />
