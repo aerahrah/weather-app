@@ -3,6 +3,15 @@ export const kevToCelcius = (data) => {
   return celcius.toFixed(0);
 };
 
+export const convertTimestampHours = (dt) => {
+  const date = new Date(dt * 1000);
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+
+  const hoursWLabel = `${hours}:${minutes}`;
+
+  return hoursWLabel;
+};
 export const convertTimestamp = (dt) => {
   const date = new Date(dt * 1000);
   const dayOfWeek = date.getDay();
@@ -40,14 +49,10 @@ export const aqiCheck = (aqi) => {
 };
 
 export const filterData = (data) => {
-  let groupedData = [];
-  let daysDataFirstValues = [];
-
   if (data) {
-    for (let i = 0; i < data.length; i += 7) {
-      groupedData.push(data.slice(i, i + 7));
-    }
-    groupedData = groupedData.slice(1);
-    return (daysDataFirstValues = groupedData.map((daysData) => daysData[0]));
+    const filteredData = data.filter((item) =>
+      item.dt_txt.endsWith("00:00:00")
+    );
+    return filteredData;
   }
 };

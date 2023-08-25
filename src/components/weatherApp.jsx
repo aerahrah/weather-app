@@ -7,6 +7,7 @@ import {
 import CurrentWeather from "./currentWeather";
 import AirQualityIndex from "./airQualityIndex";
 import ForecastWeather from "./forecastWeather";
+import ExtendedWeatherForecast from "./extendedWeatherForecast";
 import Header from "./header/header";
 import Footer from "./footer";
 
@@ -36,6 +37,7 @@ const WeatherApp = () => {
         <CurrentWeather currentWeatherData={currentWeather} />
         <ForecastWeather forecastWeatherData={weatherForecast} />
         <AirQualityIndex airQualityData={airQualityData} />
+        <ExtendedWeatherForecast forecastWeatherData={weatherForecast} />
       </div>
       <Footer />
     </div>
