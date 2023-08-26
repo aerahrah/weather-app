@@ -1,30 +1,33 @@
+const daysOfWeek = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
 export const kevToCelcius = (data) => {
   const celcius = data - 273.15;
   return celcius.toFixed(0);
 };
 
-export const convertTimestampHours = (dt) => {
-  const date = new Date(dt * 1000);
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
+export const convertTimestampHours = (dt_txt) => {
+  const timePart = dt_txt.split(" ")[1];
+  const timeOnly = timePart.split(":").slice(0, 2).join(":");
 
-  const hoursWLabel = `${hours}:${minutes}`;
+  return timeOnly;
+};
+export const convertTimestampDayName = (dt_txt) => {
+  const date = new Date(dt_txt.split(" ")[0]);
+  const dayOfWeek = daysOfWeek[date.getDay()];
 
-  return hoursWLabel;
+  return dayOfWeek;
 };
 export const convertTimestamp = (dt) => {
   const date = new Date(dt * 1000);
   const dayOfWeek = date.getDay();
-
-  const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
 
   const dayName = daysOfWeek[dayOfWeek];
   const day = date.getDate();

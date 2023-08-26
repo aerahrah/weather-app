@@ -38,8 +38,7 @@ export const getAirQualityIndex = async (lat, lon) => {
 export const getCityMeridian = async (cityName) => {
   try {
     const response = await Axios.get(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=10&appid=${api_key}`,
-      { mode: "cors" }
+      `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${api_key}`
     );
 
     return response.data;

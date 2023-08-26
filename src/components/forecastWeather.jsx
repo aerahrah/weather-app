@@ -24,7 +24,10 @@ const ForecastWeather = ({ forecastWeatherData }) => {
                 />
                 <p>{kevToCelcius(data.main.temp)}°</p>
               </li>
-              <li>{data.weather[0].description}</li>
+              <li className="flex gap-2">
+                <p>{data.weather[0].description}</p>
+                <p>{data.pop ? `${Math.round(data.pop * 100)}%` : ""}</p>
+              </li>
               <li>{convertTimestamp(data.dt)}</li>
             </ul>
           ))}

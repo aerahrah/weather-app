@@ -19,7 +19,6 @@ const SearchCityName = ({ handleOnSearchChange }) => {
               }`,
               values: `${data.lat} ${data.lon}`,
             }));
-
             setCityDetails(response);
           })
           .catch((err) => {
