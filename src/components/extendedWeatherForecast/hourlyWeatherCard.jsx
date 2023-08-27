@@ -1,4 +1,4 @@
-import { convertTimestampHours, kevToCelcius } from "../utils";
+import { convertTxtToHours, kevToCelcius } from "../utils";
 const HourlyWeatherCard = ({ filteredData }) => {
   return (
     <ul className="flex flex-col items-center justify-center bg-white p-2 min-w-[9rem] rounded-xl border-[1px] transform hover:scale-[1.08]  transition duratin-100 hover:shadow hover:text-gray-200 hover:bg-black hover:font-semibold">
@@ -16,7 +16,7 @@ const HourlyWeatherCard = ({ filteredData }) => {
           {filteredData.pop ? `${Math.round(filteredData.pop * 100)}%` : ""}
         </p>
       </li>
-      <li className="mt-1">{convertTimestampHours(filteredData.dt_txt)}</li>
+      <li className="mt-1">{convertTxtToHours(filteredData.dt_txt)}</li>
     </ul>
   );
 };

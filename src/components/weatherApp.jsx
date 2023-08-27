@@ -4,9 +4,10 @@ import {
   getWeatherForecast,
   getAirQualityIndex,
 } from "./api/weather_api";
-import CurrentWeather from "./currentWeather";
+import CurrentWeather from "./currentWeather/currentWeather";
 import AirQualityIndex from "./airQualityIndex";
 import ForecastWeather from "./forecastWeather";
+import CurrentTime from "./currentWeather/currentTime";
 import ExtendedWeatherForecast from "./extendedWeatherForecast/extendedWeatherForecast";
 import Header from "./header/header";
 import Footer from "./footer";
@@ -33,8 +34,9 @@ const WeatherApp = () => {
   return (
     <div className="relative bg-blue-50 items-center min-h-[100vh] pb-16">
       <Header handleOnSearchChange={handleOnSearchChange} />
-      <div className="md:grid md:grid-cols-2 gap-8 w-[80vw] mx-auto pt-36">
+      <div className="md:grid md:grid-cols-2  gap-8 w-[80vw] mx-auto pt-36">
         <CurrentWeather currentWeatherData={currentWeather} />
+        <CurrentTime currentTimeData={currentWeather} />
         <ForecastWeather forecastWeatherData={weatherForecast} />
         <AirQualityIndex airQualityData={airQualityData} />
         <ExtendedWeatherForecast forecastWeatherData={weatherForecast} />

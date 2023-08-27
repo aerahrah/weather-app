@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { convertTimestampDayName } from "../utils";
+import { convertTxtToDayName } from "../utils";
 import DaysContainer from "./daysContainer";
 
 const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
@@ -17,7 +17,7 @@ const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
     "Saturday",
   ];
 
-  const firstDay = convertTimestampDayName(forecastWeatherData[0].dt_txt);
+  const firstDay = convertTxtToDayName(forecastWeatherData[0].dt_txt);
   const firstDayIndex = daysOfWeek.indexOf(firstDay);
   const rearrangedDaysOfWeek = [
     ...daysOfWeek.slice(firstDayIndex),
@@ -51,11 +51,11 @@ const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
 
   return (
     <div className="col-span-2">
-      <div className="bg-white p-10 rounded-xl text-gray-500 capitalize shadow-md">
+      <div className="w-full bg-white p-10 rounded-xl text-gray-500 capitalize shadow-md">
         <h1 className="text-lg font-semibold mb-4">Extended Forecast</h1>
         {rearrangedDaysOfWeek.map((dayName, idx) => {
           const isDayAvailable = forecastWeatherData.some(
-            (dayData) => dayName === convertTimestampDayName(dayData.dt_txt)
+            (dayData) => dayName === convertTxtToDayName(dayData.dt_txt)
           );
           return (
             <DaysContainer

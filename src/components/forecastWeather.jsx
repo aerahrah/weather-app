@@ -7,20 +7,20 @@ const ForecastWeather = ({ forecastWeatherData }) => {
   const filteredData = filterData(forecastWeatherData);
   console.log(filteredData);
   return (
-    <div className="row-span-2 ">
+    <div className="xl:row-span-2 xl:col-span-1 xl:row-start-2 xl:col-start-2 row-start-3 col-start-1 col-span-2">
       <div className=" bg-white p-10 rounded-xl shadow-md text-gray-500 capitalize ">
         <h1 className="text-lg font-semibold mb-4">5 days forecast</h1>
         {filteredData.length > 0 &&
           filteredData.map((data, index) => (
             <ul
-              className="flex justify-between items-center py-2 border-b-[1px]"
+              className="flex justify-between items-center py-1 border-b-[1px]"
               key={index}
             >
               <li className="flex items-center">
                 <img
                   src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
                   alt=""
-                  className="h-20 w-20"
+                  className="h-16 w-16"
                 />
                 <p>{kevToCelcius(data.main.temp)}°</p>
               </li>

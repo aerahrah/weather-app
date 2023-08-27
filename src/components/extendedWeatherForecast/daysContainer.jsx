@@ -1,6 +1,6 @@
 import HourlyWeatherCard from "./hourlyWeatherCard";
 import { motion } from "framer-motion";
-import { convertTimestampDayName } from "../utils";
+import { convertTxtToDayName } from "../utils";
 
 const DaysContainer = ({
   isDayAvailable,
@@ -26,7 +26,7 @@ const DaysContainer = ({
         >
           {forecastWeatherData
             .filter(
-              (dayData) => dayName === convertTimestampDayName(dayData.dt_txt)
+              (dayData) => dayName === convertTxtToDayName(dayData.dt_txt)
             )
             .map((filteredData, idx) => (
               <HourlyWeatherCard key={idx} filteredData={filteredData} />
