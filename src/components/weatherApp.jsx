@@ -7,7 +7,7 @@ import {
 import CurrentWeather from "./currentWeather";
 import AirQualityIndex from "./airQualityIndex";
 import ForecastWeather from "./forecastWeather";
-import ExtendedWeatherForecast from "./extendedWeatherForecast";
+import ExtendedWeatherForecast from "./extendedWeatherForecast/extendedWeatherForecast";
 import Header from "./header/header";
 import Footer from "./footer";
 
