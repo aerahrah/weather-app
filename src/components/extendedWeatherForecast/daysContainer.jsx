@@ -18,7 +18,7 @@ const DaysContainer = ({
       >
         <h1 className="text-[1rem] font-semibold">{dayName}</h1>
         <motion.div
-          className="flex gap-6 pb-4 pt-2 px-2"
+          className="flex gap-4 md:gap-6 pb-4 pt-2"
           initial="hidden"
           drag="x"
           dragConstraints={{ left: -dayWidths[idx], right: 0 }}

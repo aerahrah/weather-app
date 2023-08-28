@@ -51,8 +51,8 @@ const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
 
   return (
     <div className="col-span-2">
-      <div className="w-full bg-white p-10 rounded-xl text-gray-500 capitalize shadow-md">
-        <h1 className="text-lg font-semibold mb-4">Extended Forecast</h1>
+      <div className="w-full bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-xl text-gray-500 text-md lg:text-lg capitalize shadow-md">
+        <h1 className="font-semibold mb-4">Extended Forecast</h1>
         {rearrangedDaysOfWeek.map((dayName, idx) => {
           const isDayAvailable = forecastWeatherData.some(
             (dayData) => dayName === convertTxtToDayName(dayData.dt_txt)

@@ -7,6 +7,7 @@ const daysOfWeek = [
   "Friday",
   "Saturday",
 ];
+const daysOfWeekMobile = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const kevToCelcius = (data) => {
   const celcius = data - 273.15;
@@ -51,15 +52,22 @@ export const convertTxtToDayName = (dt_txt) => {
 
   return dayOfWeek;
 };
-export const convertTimestamp = (dt) => {
+export const convertTimestamp = (dt, isMobile) => {
   const date = new Date(dt * 1000);
   const dayOfWeek = date.getDay();
 
-  const dayName = daysOfWeek[dayOfWeek];
+  let dayName;
+  let month;
   const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "long" });
+  if (isMobile) {
+    month = date.toLocaleString("default", { month: "short" });
+    dayName = daysOfWeekMobile[dayOfWeek];
+  } else {
+    month = date.toLocaleString("default", { month: "long" });
+    dayName = daysOfWeek[dayOfWeek];
+  }
 
-  return `${dayName} ${day}, ${month}`;
+  return `${dayName}, ${day} ${month}`;
 };
 
 export const aqiCheck = (aqi) => {
