@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getCityMeridian } from "../api/weather_api";
 import { Combobox } from "@headlessui/react";
 import debounce from "lodash/debounce";
-import { FaSearch } from "react-icons/fa";
+import { FaSearchLocation } from "react-icons/fa";
 
 const SearchCityName = ({ handleOnSearchChange }) => {
   const [cityName, setCityName] = useState("");
@@ -49,13 +49,13 @@ const SearchCityName = ({ handleOnSearchChange }) => {
   }, [cityName]);
 
   return (
-    <div className="rounded-md">
+    <div className="rounded-md w-full">
       <Combobox value={cityName} as="div" className="relative">
         <div className="relative flex items-center w-full py-3">
-          <FaSearch className="text-gray-600 absolute left-[.75rem]" />
+          <FaSearchLocation className="text-gray-600 absolute left-[.75rem]" />
           <Combobox.Input
             placeholder="Enter city name"
-            className="outline-0 w-[50vw] p-1.5 pl-10   text-lg rounded-full bg-blue-50 shadow-inner"
+            className="outline-0 w-full p-1.5 pl-10   text-lg rounded-full bg-blue-50 shadow-inner"
             value={cityName}
             onChange={(event) => {
               setCityName(event.target.value);
