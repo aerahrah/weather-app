@@ -49,13 +49,13 @@ const SearchCityName = ({ handleOnSearchChange }) => {
   }, [cityName]);
 
   return (
-    <div className="rounded-md w-full">
+    <div className="w-full rounded-md">
       <Combobox value={cityName} as="div" className="relative">
         <div className="relative flex items-center w-full py-3">
-          <FaSearchLocation className="text-gray-600 absolute left-[.75rem]" />
+          <FaSearchLocation className="absolute text-gray-600 left-[.75rem]" />
           <Combobox.Input
             placeholder="Enter city name"
-            className="outline-0 w-full p-1.5 pl-10   text-lg rounded-full bg-blue-50 shadow-inner"
+            className="w-full p-1.5 pl-10 rounded-full outline-0 bg-blue-50 shadow-inner text-lg"
             value={cityName}
             onChange={(event) => {
               setCityName(event.target.value);
@@ -64,7 +64,7 @@ const SearchCityName = ({ handleOnSearchChange }) => {
         </div>
 
         {cityDetails?.length > 0 && (
-          <Combobox.Options className="absolute bg-white w-full mt-1 py-2 rounded-md shadow-md">
+          <Combobox.Options className="absolute w-full bg-white mt-1 py-2 rounded-md shadow-md">
             {cityDetails.map((city) => (
               <CityOption key={city.id} city={city} />
             ))}

@@ -14,7 +14,7 @@ const Footer = () => {
           aerahrah
           <FaGithub
             size="1.5rem"
-            className="transition duration-100 transform hover:scale-[1.06] hover:cursor-pointer"
+            className="transition transform duration-100 hover:scale-[1.06] hover:cursor-pointer"
           />
         </a>
       </p>

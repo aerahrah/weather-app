@@ -3,14 +3,14 @@ import GetCurrentLocation from "./getCurrentLocation";
 
 const Header = ({ handleOnSearchChange }) => {
   return (
-    <header className="w-full absolute top-0 p-2 md:p-6 bg-white shadow-md ">
-      <div className="flex flex-col md:flex-row items-center md:gap-6 w-[90vw] md:w-[80vw] mx-auto ">
+    <header className="absolute w-full bg-white shadow-md top-0 p-2 md:p-6 ">
+      <div className="flex flex-col items-center mx-auto md:flex-row md:gap-6 w-[90vw] md:w-[80vw]">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold text-center text-sky-600 tracking-tight">
+          <h1 className="text-center text-sky-600 tracking-tight font-bold text-3xl md:text-4xl">
             Weatherly
           </h1>
         </div>
-        <div className="flex gap-2 md:gap-4 w-full items-center justify-center">
+        <div className="flex items-center justify-center w-full gap-2 md:gap-4">
           <SearchCityName handleOnSearchChange={handleOnSearchChange} />
           <GetCurrentLocation handleOnSearchChange={handleOnSearchChange} />
         </div>

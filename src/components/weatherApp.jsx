@@ -32,9 +32,9 @@ const WeatherApp = () => {
   };
 
   return (
-    <div className="relative bg-blue-100 items-center min-h-[100vh] pb-16">
+    <div className="relative bg-blue-100 min-h-[100vh] pb-16">
       <Header handleOnSearchChange={handleOnSearchChange} />
-      <div className="md:grid flex flex-col gap-4 md:grid-cols-2  md:gap-6 w-[90vw] lg:w-[85vw] xl:w-[80vw] mx-auto pt-36">
+      <div className="flex flex-col w-[90vw] lg:w-[85vw] xl:w-[80vw] pt-36 gap-4 mx-auto md:grid  md:grid-cols-2 md:gap-6">
         <CurrentWeather currentWeatherData={currentWeather} />
         <CurrentTime currentTimeData={currentWeather} />
         <ForecastWeather forecastWeatherData={weatherForecast} />

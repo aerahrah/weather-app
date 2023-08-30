@@ -17,7 +17,7 @@ const GetCurrentLocation = ({ handleOnSearchChange }) => {
   return (
     <div className="">
       <button
-        className="bg-sky-600 text-sky-50 px-4 py-3 md:py-2 rounded-full flex items-center gap-2 transition duration-100 tranformation hover:scale-[1.01] hover:shadow"
+        className="flex items-center gap-2 bg-sky-600 text-sky-50 px-4 py-3 md:py-2 rounded-full  tranformation transition duration-100 hover:shadow hover:scale-[1.01]"
         onClick={getCurrentPosition}
       >
         <FaLocationDot />

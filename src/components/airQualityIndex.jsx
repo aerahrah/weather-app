@@ -9,8 +9,8 @@ const AirQualityIndex = ({ airQualityData }) => {
     main: { aqi },
   } = airQualityData;
   return (
-    <div className="row-start-2 col-start-2 xl:row-start-3 xl:col-start-1">
-      <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10  rounded-xl shadow-md text-md lg:text-lg text-gray-500 capitalize">
+    <div className="bg-white shadow-md rounded-xl row-start-2 col-start-2 xl:row-start-3 xl:col-start-1">
+      <div className="p-4 md:p-6 lg:p-8 xl:p-10 capitalize text-gray-500 text-md lg:text-lg">
         <div className="flex justify-between">
           <h1 className="font-semibold">air quality index</h1>
           {aqiCheck(aqi)}

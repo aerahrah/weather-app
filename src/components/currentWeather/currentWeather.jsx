@@ -19,8 +19,8 @@ const CurrentWeather = ({ currentWeatherData }) => {
   } = currentWeatherData;
 
   return (
-    <div className="row-start-1 col-start-1 row-span-2 bg-white shadow-md rounded-xl">
-      <div className="p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col sm:grid md:flex sm:grid-cols-2 md:flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-x-12 gap-y-6 text-md lg:text-lg text-gray-500 ">
+    <div className="bg-white shadow-md rounded-xl row-start-1 col-start-1 row-span-2">
+      <div className="p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col sm:grid sm:grid-cols-2 md:flex  md:flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-x-12 gap-y-6 text-md  lg:text-lg text-gray-500 ">
         <div className="col-span-2">
           <p className="font-semibold">Today's Weather</p>
         </div>
@@ -54,7 +54,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
         </div>
         <div className="flex sm:flex-col md:flex-row lg:flex-col gap-4 md:gap-6 lg:gap-8 capitalize">
           <div className="flex flex-col gap-2 lg:gap-4">
-            <div className="flex items-center  gap-1 lg:gap-2">
+            <div className="flex items-center gap-1 lg:gap-2">
               <FaTemperatureEmpty className="text-xl" />
               <p className="text-gray-600">
                 feels like {kevToCelcius(main.feels_like)}°

@@ -14,11 +14,11 @@ const DaysContainer = ({
     isDayAvailable && (
       <div
         ref={dayNameRefs.current[idx]}
-        className="w-full flex flex-col gap-4 text-xs mt-6 overflow-x-hidden border-b-[1px] cursor-grab"
+        className="w-full flex flex-col gap-4 mt-6 overflow-x-hidden border-b-[1px] cursor-grab text-xs"
       >
-        <h1 className="text-[1rem] font-semibold">{dayName}</h1>
+        <h1 className=" font-semibold text-[1rem]">{dayName}</h1>
         <motion.div
-          className="flex gap-4 md:gap-6 pb-4 pt-2"
+          className="flex pb-4 pt-2 gap-4 md:gap-6"
           initial="hidden"
           drag="x"
           dragConstraints={{ left: -dayWidths[idx], right: 0 }}
