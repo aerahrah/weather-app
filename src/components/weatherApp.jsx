@@ -5,7 +5,7 @@ import {
   getAirQualityIndex,
 } from "./api/weather_api";
 import CurrentWeather from "./currentWeather/currentWeather";
-import AirQualityIndex from "./airQualityIndex";
+import AirQualityIndex from "./aqiWeather/airQualityIndex";
 import ForecastWeather from "./forecastWeather/forecastWeather";
 import CurrentTime from "./currentWeather/currentTime";
 import ExtendedWeatherForecast from "./extendedWeatherForecast/extendedWeatherForecast";
@@ -32,7 +32,7 @@ const WeatherApp = () => {
   };
 
   return (
-    <div className="relative bg-blue-100 min-h-[100vh] pb-16">
+    <div className="relative bg-blue-100 min-h-[100vh] pb-16 ">
       <Header handleOnSearchChange={handleOnSearchChange} />
       <div className="flex flex-col w-[90vw] lg:w-[85vw] xl:w-[80vw] pt-36 gap-4 mx-auto md:grid  md:grid-cols-2 md:gap-6">
         <CurrentWeather currentWeatherData={currentWeather} />

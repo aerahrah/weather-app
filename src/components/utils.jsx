@@ -73,15 +73,15 @@ export const convertTimestamp = (dt, isMobile) => {
 export const aqiCheck = (aqi) => {
   switch (aqi) {
     case 1:
-      return <p className="bg-green-400 rounded-full py-1 px-4">Good</p>;
+      return { label: "good", color: "green" };
     case 2:
-      return <p className="bg-green-300 rounded-full py-1 px-4">Fair</p>;
+      return { label: "fair", color: "yellow" };
     case 3:
-      return <p className="bg-yellow-300 rounded-full py-1 px-4">Moderate</p>;
+      return { label: "moderate", color: "orange" };
     case 4:
-      return <p className="bg-orange-300 rounded-full py-1 px-4">Poor</p>;
+      return { label: "poor", color: "red" };
     case 5:
-      return <p className="bg-red-300 rounded-full py-1 px-4">Very Poor</p>;
+      return { label: "very poor", color: "purple" };
   }
 };
 
