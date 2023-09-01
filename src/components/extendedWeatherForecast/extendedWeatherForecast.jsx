@@ -51,7 +51,7 @@ const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
 
   return (
     <div className="col-span-2">
-      <div className="w-full bg-white rounded-xl shadow-md p-4 md:p-6 lg:p-8 xl:p-10 capitalize  text-gray-500 text-md lg:text-lg">
+      <div className="w-full bg-white rounded-xl shadow-md p-4 md:p-6 lg:p-8 xl:p-10 capitalize  text-gray-500 text-base lg:text-lg">
         <h1 className="font-semibold mb-4">Extended Forecast</h1>
         {rearrangedDaysOfWeek.map((dayName, idx) => {
           const isDayAvailable = forecastWeatherData.some(

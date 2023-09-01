@@ -42,6 +42,7 @@ const AqiInfoCard = ({
                 desc={
                   "Air quality is satisfactory, and air pollution poses little or no risk."
                 }
+                bgColor={"#9AE6B4"}
               />
               <TableRow
                 color={"yellow"}
@@ -49,6 +50,7 @@ const AqiInfoCard = ({
                 desc={
                   "Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution."
                 }
+                bgColor={"#FAF089"}
               />
               <TableRow
                 color={"orange"}
@@ -56,6 +58,7 @@ const AqiInfoCard = ({
                 desc={
                   "Members of sensitive groups may experience health effects. The general public is less likely to be affected."
                 }
+                bgColor={"#FBD38D"}
               />
               <TableRow
                 color={"red"}
@@ -63,6 +66,7 @@ const AqiInfoCard = ({
                 desc={
                   "Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects."
                 }
+                bgColor={"#FEB2B2"}
               />
               <TableRow
                 color={"purple"}
@@ -70,6 +74,7 @@ const AqiInfoCard = ({
                 desc={
                   "Health alert: The risk of health effects is increased for everyone."
                 }
+                bgColor={"#D6BCFA"}
               />
             </tbody>
           </table>
@@ -78,9 +83,12 @@ const AqiInfoCard = ({
     </motion.div>
   );
 };
-export const TableRow = ({ color, concern, desc }) => {
+export const TableRow = ({ color, concern, desc, bgColor }) => {
   return (
-    <tr className={`bg-${color}-300 text-sm text-md lg:text-lg`}>
+    <tr
+      style={{ backgroundColor: `${bgColor}` }}
+      className={`text-sm text-md lg:text-lg`}
+    >
       <td className="p-2"> {color}</td>
       <td className="p-2">{concern}</td>
       <td className="p-2">{desc}</td>

@@ -12,19 +12,25 @@ const AirQualityIndex = ({ airQualityData }) => {
     components: { no2, so2, o3, pm2_5 },
     main: { aqi },
   } = airQualityData;
+  const aqiInfo = aqiCheck(aqi);
+
+  if (!aqiInfo) {
+    return null;
+  }
+
   return (
     <div className="bg-white relative shadow-md rounded-xl row-start-2 col-start-2 xl:row-start-3 xl:col-start-1">
+      {console.log(aqiInfo.color)}
       <div className="flex flex-col justify-around p-4 md:p-6 lg:p-8 xl:p-10 capitalize text-gray-500 text-md lg:text-lg h-44 md:h-full">
         <div className="flex justify-between">
           <h1 className="font-semibold">air quality index</h1>
 
           <button
+            style={{ backgroundColor: `${aqiInfo.color}` }}
             onClick={() => setIsInfoCardOpen(true)}
-            className={`flex items-center h-full bg-${
-              aqiCheck(aqi).color
-            }-300 py-1 px-3 capitalize rounded-full gap-1 transition duration-100 hover:shadow transform  hover:scale-[1.02] focus:scale-[1.02] active:scale-[0.94]`}
+            className={`flex items-center h-full py-1 px-3 capitalize rounded-full gap-1 transition duration-100 hover:shadow transform  hover:scale-[1.02] focus:scale-[1.02] active:scale-[0.94]`}
           >
-            <p>{aqiCheck(aqi).label}</p>
+            <p>{aqiInfo.label}</p>
             <div className="mb-[3px] ">
               <FaInfo />
             </div>

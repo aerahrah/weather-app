@@ -1,8 +1,9 @@
 import { kevToCelcius, convertTimestamp } from "../utils";
-import { FaTemperatureEmpty, FaDroplet, FaWind } from "react-icons/fa6";
+import { FaTemperatureHalf, FaDroplet, FaWind } from "react-icons/fa6";
 import { ImArrowUp, ImArrowDown } from "react-icons/im";
-import { MdLocationOn, MdCalendarToday } from "react-icons/md";
 import { IoIosSpeedometer } from "react-icons/io";
+import { MdLocationOn, MdCalendarToday } from "react-icons/md";
+
 import TableRow from "./tableRow";
 const CurrentWeather = ({ currentWeatherData }) => {
   if (!currentWeatherData) {
@@ -20,7 +21,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
 
   return (
     <div className="bg-white shadow-md rounded-xl row-start-1 col-start-1 row-span-2">
-      <div className="p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col sm:grid sm:grid-cols-2 md:flex  md:flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-x-12 gap-y-6 text-md  lg:text-lg text-gray-500 ">
+      <div className="p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col sm:grid sm:grid-cols-2 md:flex  md:flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-x-12 gap-y-6 text-base  lg:text-lg text-gray-500 ">
         <div className="col-span-2">
           <p className="font-semibold">Today's Weather</p>
         </div>
@@ -55,7 +56,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
         <div className="flex sm:flex-col md:flex-row lg:flex-col gap-4 md:gap-6 lg:gap-8 capitalize">
           <div className="flex flex-col gap-2 lg:gap-4">
             <div className="flex items-center gap-1 lg:gap-2">
-              <FaTemperatureEmpty className="text-xl" />
+              <FaTemperatureHalf className="text-xl" />
               <p className="text-gray-600">
                 feels like {kevToCelcius(main.feels_like)}°
               </p>
@@ -81,19 +82,16 @@ const CurrentWeather = ({ currentWeatherData }) => {
                 icon={<FaDroplet className="text-xl" />}
                 label="humidity"
                 value={`${main.humidity}%`}
-                color="sky"
               />
               <TableRow
                 icon={<FaWind className="text-xl" />}
                 label="wind"
                 value={`${wind.speed} kph`}
-                color="sky"
               />
               <TableRow
                 icon={<IoIosSpeedometer className="text-xl" />}
                 label="pressure"
                 value={`${main.pressure} hPa`}
-                color="sky"
               />
             </tbody>
           </table>

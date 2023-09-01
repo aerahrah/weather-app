@@ -8,7 +8,7 @@ const HourlyWeatherCard = ({ filteredData }) => {
           alt=""
           className="h-12 w-12"
         />
-        <p className="text-md">{kevToCelcius(filteredData.main.temp)}°</p>
+        <p className="text-base">{kevToCelcius(filteredData.main.temp)}°</p>
       </li>
       <li className="flex gap-1 items-center">
         <p>{filteredData.weather[0].description}</p>
