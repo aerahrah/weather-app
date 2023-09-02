@@ -1,4 +1,4 @@
-import { convertTimestampHours, convertTimezone } from "../utils";
+import { convertTimestampHours, convertTimezone } from "../utils/utils";
 import { BsFillSunriseFill, BsFillSunsetFill } from "react-icons/bs";
 
 const CurrentTime = ({ currentTimeData }) => {

@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { convertTxtToDayName } from "../utils";
+import { convertTxtToDayName } from "../utils/utils";
 import DaysContainer from "./daysContainer";
 
 const ExtendedWeatherForecast = ({ forecastWeatherData }) => {

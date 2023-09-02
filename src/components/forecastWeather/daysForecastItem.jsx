@@ -1,10 +1,10 @@
-import { convertTimestamp, kevToCelcius } from "../utils";
+import { kevToCelcius } from "../utils/utils";
 import { BiUpArrowAlt, BiDotsHorizontalRounded } from "react-icons/bi";
 import { useState } from "react";
 import ForecastWeatherInfoCard from "./forecastWeatherInfoCard";
 import { motion, AnimatePresence } from "framer-motion";
 
-const DayForecastItem = ({ data, isMobile }) => {
+const DayForecastItem = ({ data, timestamp }) => {
   console.log(data);
   const [isWeatherInfoCardOpen, setIsWeatherInfoCardOpen] = useState(false);
   return (
@@ -22,37 +22,20 @@ const DayForecastItem = ({ data, isMobile }) => {
           <p>{data.weather[0].description}</p>
           <p>{data.pop ? `${Math.round(data.pop * 100)}%` : ""}</p>
         </li>
-        {isMobile === "mobile" ? (
-          <li className="flex gap-1 md:gap-2 lg:gap-4 items-center">
-            {convertTimestamp(data.dt, true)}
-            {!isWeatherInfoCardOpen ? (
-              <BiDotsHorizontalRounded
-                onClick={() => setIsWeatherInfoCardOpen(true)}
-                className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full"
-              />
-            ) : (
-              <BiUpArrowAlt
-                onClick={() => setIsWeatherInfoCardOpen(false)}
-                className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full"
-              />
-            )}
-          </li>
-        ) : (
-          <li className="flex gap-1 md:gap-2 lg:gap-4 items-center">
-            {convertTimestamp(data.dt, false)}
-            {!isWeatherInfoCardOpen ? (
-              <BiDotsHorizontalRounded
-                onClick={() => setIsWeatherInfoCardOpen(true)}
-                className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full"
-              />
-            ) : (
-              <BiUpArrowAlt
-                onClick={() => setIsWeatherInfoCardOpen(false)}
-                className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full"
-              />
-            )}
-          </li>
-        )}
+        <li className="flex gap-1 md:gap-2 lg:gap-4 items-center">
+          <p>{timestamp}</p>
+          {!isWeatherInfoCardOpen ? (
+            <BiDotsHorizontalRounded
+              onClick={() => setIsWeatherInfoCardOpen(true)}
+              className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full"
+            />
+          ) : (
+            <BiUpArrowAlt
+              onClick={() => setIsWeatherInfoCardOpen(false)}
+              className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full"
+            />
+          )}
+        </li>
       </ul>
       <AnimatePresence>
         {isWeatherInfoCardOpen && (

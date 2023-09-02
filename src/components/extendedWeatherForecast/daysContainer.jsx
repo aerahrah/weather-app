@@ -1,6 +1,6 @@
 import HourlyWeatherCard from "./hourlyWeatherCard";
 import { motion } from "framer-motion";
-import { convertTxtToDayName } from "../utils";
+import { convertTxtToDayName } from "../utils/utils";
 
 const DaysContainer = ({
   isDayAvailable,

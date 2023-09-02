@@ -1,4 +1,4 @@
-import { filterData } from "../utils";
+import { convertTimestamp, filterData } from "../utils/utils";
 import DayForecastItem from "./daysForecastItem";
 const ForecastWeather = ({ forecastWeatherData }) => {
   if (!forecastWeatherData) {
@@ -15,13 +15,21 @@ const ForecastWeather = ({ forecastWeatherData }) => {
         <div className="hidden sm:block xl:hidden overflow-y-auto h-[364px] sm:mb-4 md:mb-6 sm:px-4 md:px-6 lg:px-8">
           {filteredData.length > 0 &&
             filteredData.map((data, idx) => (
-              <DayForecastItem data={data} isMobile={"desktop"} key={idx} />
+              <DayForecastItem
+                data={data}
+                timestamp={convertTimestamp(data.dt, false)}
+                key={idx}
+              />
             ))}
         </div>
         <div className="block sm:hidden xl:block overflow-y-auto h-[284px] xl:h-[364px] mb-4 xl:mb-8 px-4 xl:px-10">
           {filteredData.length > 0 &&
             filteredData.map((data, idx) => (
-              <DayForecastItem data={data} isMobile={"mobile"} key={idx} />
+              <DayForecastItem
+                data={data}
+                timestamp={convertTimestamp(data.dt, true)}
+                key={idx}
+              />
             ))}
         </div>
       </div>

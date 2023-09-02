@@ -1,4 +1,4 @@
-import { aqiCheck } from "../utils";
+import { aqiCheck } from "../utils/utils";
 import { FaWind, FaInfo, FaXmark } from "react-icons/fa6";
 import AqiInfoCard from "./aqiInfoCard";
 import { useState } from "react";

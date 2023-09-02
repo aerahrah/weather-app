@@ -1,4 +1,4 @@
-import { kevToCelcius, convertTimestamp } from "../utils";
+import { kevToCelcius, convertTimestamp } from "../utils/utils";
 import { FaTemperatureHalf, FaDroplet, FaWind } from "react-icons/fa6";
 import { ImArrowUp, ImArrowDown } from "react-icons/im";
 import { IoIosSpeedometer } from "react-icons/io";

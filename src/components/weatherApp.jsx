@@ -11,14 +11,16 @@ import CurrentTime from "./currentWeather/currentTime";
 import ExtendedWeatherForecast from "./extendedWeatherForecast/extendedWeatherForecast";
 import Header from "./header/header";
 import Footer from "./footer";
-
+import Spinner from "./utils/spinner";
 const WeatherApp = () => {
   const [weatherForecast, setWeatherForecast] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [airQualityData, setAirQualityData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.split(" ");
+    setIsLoading(true);
     Promise.all([
       getCurrentWeatherForecast(lat, lon),
       getWeatherForecast(lat, lon),
@@ -28,19 +30,24 @@ const WeatherApp = () => {
       setWeatherForecast(weatherForecast.list);
       setAirQualityData(airQualityData.list[0]);
       console.log(weatherForecast);
+      setIsLoading(false);
     });
   };
 
   return (
     <div className="relative bg-blue-100 min-h-[100vh] pb-16 ">
       <Header handleOnSearchChange={handleOnSearchChange} />
-      <div className="flex flex-col w-[90vw] lg:w-[85vw] xl:w-[80vw] pt-36 gap-4 mx-auto md:grid  md:grid-cols-2 md:gap-6">
-        <CurrentWeather currentWeatherData={currentWeather} />
-        <CurrentTime currentTimeData={currentWeather} />
-        <ForecastWeather forecastWeatherData={weatherForecast} />
-        <AirQualityIndex airQualityData={airQualityData} />
-        <ExtendedWeatherForecast forecastWeatherData={weatherForecast} />
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className="flex flex-col w-[90vw] lg:w-[85vw] xl:w-[80vw] pt-36 gap-4 mx-auto md:grid  md:grid-cols-2 md:gap-6">
+          <CurrentWeather currentWeatherData={currentWeather} />
+          <CurrentTime currentTimeData={currentWeather} />
+          <ForecastWeather forecastWeatherData={weatherForecast} />
+          <AirQualityIndex airQualityData={airQualityData} />
+          <ExtendedWeatherForecast forecastWeatherData={weatherForecast} />
+        </div>
+      )}
       <Footer />
     </div>
   );
