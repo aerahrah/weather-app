@@ -5,7 +5,6 @@ import ForecastWeatherInfoCard from "./forecastWeatherInfoCard";
 import { motion, AnimatePresence } from "framer-motion";
 
 const DayForecastItem = ({ data, timestamp }) => {
-  console.log(data);
   const [isWeatherInfoCardOpen, setIsWeatherInfoCardOpen] = useState(false);
   return (
     <div className=" border-b-[1px]">

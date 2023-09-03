@@ -3,10 +3,6 @@ import { convertTxtToDayName } from "../utils/utils";
 import DaysContainer from "./daysContainer";
 import ComponentAnim from "../utils/componentAnim";
 const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
-  if (!forecastWeatherData) {
-    return null;
-  }
-
   const daysOfWeek = [
     "Sunday",
     "Monday",

@@ -12,26 +12,38 @@ import ExtendedWeatherForecast from "./extendedWeatherForecast/extendedWeatherFo
 import Header from "./header/header";
 import Footer from "./footer";
 import Spinner from "./utils/spinner";
+import ErrorNotification from "./utils/errorNotification";
+import { motion, AnimatePresence } from "framer-motion";
+
 const WeatherApp = () => {
   const [weatherForecast, setWeatherForecast] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [airQualityData, setAirQualityData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showComponent, setShowComponent] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.split(" ");
+    setShowComponent(false);
     setIsLoading(true);
     Promise.all([
       getCurrentWeatherForecast(lat, lon),
       getWeatherForecast(lat, lon),
       getAirQualityIndex(lat, lon),
-    ]).then(([currentWeatherForecast, weatherForecast, airQualityData]) => {
-      setCurrentWeather(currentWeatherForecast);
-      setWeatherForecast(weatherForecast.list);
-      setAirQualityData(airQualityData.list[0]);
-      console.log(weatherForecast);
-      setIsLoading(false);
-    });
+    ])
+      .then(([currentWeatherForecast, weatherForecast, airQualityData]) => {
+        setCurrentWeather(currentWeatherForecast);
+        setWeatherForecast(weatherForecast.list);
+        setAirQualityData(airQualityData.list[0]);
+        setShowComponent(true);
+        setIsLoading(false);
+        setErrorMsg("");
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setErrorMsg(error.message);
+      });
   };
 
   return (
@@ -40,15 +52,23 @@ const WeatherApp = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col w-[90vw] lg:w-[85vw] xl:w-[80vw] pt-36 gap-4 mx-auto md:grid  md:grid-cols-2 md:gap-6">
-          <CurrentWeather currentWeatherData={currentWeather} />
-          <CurrentTime currentTimeData={currentWeather} />
-          <ForecastWeather forecastWeatherData={weatherForecast} />
-          <AirQualityIndex airQualityData={airQualityData} />
-          <ExtendedWeatherForecast forecastWeatherData={weatherForecast} />
-        </div>
+        showComponent && (
+          <div className="flex flex-col w-[90vw] lg:w-[85vw] xl:w-[80vw] pt-36 gap-4 mx-auto md:grid  md:grid-cols-2 md:gap-6">
+            <CurrentWeather currentWeatherData={currentWeather} />
+            <CurrentTime currentTimeData={currentWeather} />
+            <ForecastWeather forecastWeatherData={weatherForecast} />
+            <AirQualityIndex airQualityData={airQualityData} />
+            <ExtendedWeatherForecast forecastWeatherData={weatherForecast} />
+          </div>
+        )
       )}
       <Footer />
+      {errorMsg && (
+        <ErrorNotification
+          errorMsg={errorMsg}
+          onClose={() => setErrorMsg("")}
+        />
+      )}
     </div>
   );
 };

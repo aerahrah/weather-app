@@ -7,10 +7,10 @@ export const getCurrentWeatherForecast = async (lat, lon) => {
     const response = await Axios.get(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`
     );
-    console.log(response.data);
+
     return response.data;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 
@@ -21,7 +21,7 @@ export const getWeatherForecast = async (lat, lon) => {
     );
     return response.data;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 export const getAirQualityIndex = async (lat, lon) => {
@@ -32,7 +32,7 @@ export const getAirQualityIndex = async (lat, lon) => {
 
     return response.data;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };
 export const getCityMeridian = async (cityName) => {
@@ -43,6 +43,6 @@ export const getCityMeridian = async (cityName) => {
 
     return response.data;
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };

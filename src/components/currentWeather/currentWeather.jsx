@@ -6,10 +6,6 @@ import { MdLocationOn, MdCalendarToday } from "react-icons/md";
 import TableRow from "./tableRow";
 import ComponentAnim from "../utils/componentAnim";
 const CurrentWeather = ({ currentWeatherData }) => {
-  if (!currentWeatherData) {
-    return null;
-  }
-
   const {
     name,
     sys: { country },

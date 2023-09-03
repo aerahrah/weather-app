@@ -2,11 +2,7 @@ import { convertTimestamp, filterData } from "../utils/utils";
 import DayForecastItem from "./daysForecastItem";
 import ComponentAnim from "../utils/componentAnim";
 const ForecastWeather = ({ forecastWeatherData }) => {
-  if (!forecastWeatherData) {
-    return null;
-  }
   const filteredData = filterData(forecastWeatherData);
-  console.log(filteredData);
   return (
     <ComponentAnim className="bg-white rounded-xl shadow-md row-start-3 col-start-1 col-span-2 xl:row-span-2 xl:col-span-1 xl:row-start-2 xl:col-start-2">
       <div className=" text-gray-500 capitalize text-base lg:text-lg">
