@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { convertTxtToDayName } from "../utils/utils";
 import DaysContainer from "./daysContainer";
-
+import ComponentAnim from "../utils/componentAnim";
 const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
   if (!forecastWeatherData) {
     return null;
@@ -50,7 +50,7 @@ const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
   }, []);
 
   return (
-    <div className="col-span-2">
+    <ComponentAnim className="col-span-2">
       <div className="w-full bg-white rounded-xl shadow-md p-4 md:p-6 lg:p-8 xl:p-10 capitalize  text-gray-500 text-base lg:text-lg">
         <h1 className="font-semibold mb-4">Extended Forecast</h1>
         {rearrangedDaysOfWeek.map((dayName, idx) => {
@@ -70,7 +70,7 @@ const ExtendedWeatherForecast = ({ forecastWeatherData }) => {
           );
         })}
       </div>
-    </div>
+    </ComponentAnim>
   );
 };
 

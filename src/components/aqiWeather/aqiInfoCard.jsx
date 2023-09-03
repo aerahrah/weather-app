@@ -7,8 +7,11 @@ const AqiInfoCard = ({
   return (
     <motion.div
       className="absolute inset-0 h-full bg-white rounded-xl "
-      initial={{ scale: 0 }}
-      animate={{ scale: isInfoCardOpen ? 1 : 0 }}
+      initial={{ opacity: 0, scale: 0.3 }}
+      animate={{
+        opacity: isInfoCardOpen ? 1 : 0.3,
+        scale: isInfoCardOpen ? 1 : 0.3,
+      }}
       exit={{ scale: 0 }}
       transition={{ duration: 0.15 }}
     >

@@ -3,8 +3,8 @@ import { FaTemperatureHalf, FaDroplet, FaWind } from "react-icons/fa6";
 import { ImArrowUp, ImArrowDown } from "react-icons/im";
 import { IoIosSpeedometer } from "react-icons/io";
 import { MdLocationOn, MdCalendarToday } from "react-icons/md";
-
 import TableRow from "./tableRow";
+import ComponentAnim from "../utils/componentAnim";
 const CurrentWeather = ({ currentWeatherData }) => {
   if (!currentWeatherData) {
     return null;
@@ -20,7 +20,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
   } = currentWeatherData;
 
   return (
-    <div className="bg-white shadow-md rounded-xl row-start-1 col-start-1 row-span-2">
+    <ComponentAnim className="bg-white shadow-md rounded-xl row-start-1 col-start-1 row-span-2">
       <div className="p-4 md:p-6 lg:p-8 xl:p-10 flex flex-col sm:grid sm:grid-cols-2 md:flex  md:flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-x-12 gap-y-6 text-base  lg:text-lg text-gray-500 ">
         <div className="col-span-2">
           <p className="font-semibold">Today's Weather</p>
@@ -97,7 +97,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
           </table>
         </div>
       </div>
-    </div>
+    </ComponentAnim>
   );
 };
 

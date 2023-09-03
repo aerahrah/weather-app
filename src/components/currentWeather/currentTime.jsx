@@ -1,6 +1,6 @@
 import { convertTimestampHours, convertTimezone } from "../utils/utils";
 import { BsFillSunriseFill, BsFillSunsetFill } from "react-icons/bs";
-
+import ComponentAnim from "../utils/componentAnim";
 const CurrentTime = ({ currentTimeData }) => {
   if (!currentTimeData) {
     return null;
@@ -14,7 +14,9 @@ const CurrentTime = ({ currentTimeData }) => {
   } = currentTimeData;
   console.log(currentTimeData);
   return (
-    <div className="bg-white rounded-xl shadow-md lg:row-start-1 lg:col-start-2 ">
+    <ComponentAnim
+      className="bg-white rounded-xl shadow-md lg:row-start-1 lg:col-start-2"
+    >
       <div className="p-4 md:p-6 lg:p-8 xl:p-10 flex flex-wrap justify-between items-between gap-2 md:gap-4 lg:gap-6 text-gray-500 text-base lg:text-lg">
         <div className="flex md:flex-col justify-between w-[80vw] gap-4 mx-auto sm:mx-0  sm:w-auto">
           <h1 className="font-bold text-gray-700 text-2xl md:text-4xl ">
@@ -43,7 +45,7 @@ const CurrentTime = ({ currentTimeData }) => {
           </div>
         </div>
       </div>
-    </div>
+    </ComponentAnim>
   );
 };
 

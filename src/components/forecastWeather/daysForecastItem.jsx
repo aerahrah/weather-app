@@ -27,12 +27,12 @@ const DayForecastItem = ({ data, timestamp }) => {
           {!isWeatherInfoCardOpen ? (
             <BiDotsHorizontalRounded
               onClick={() => setIsWeatherInfoCardOpen(true)}
-              className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full"
+              className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full transition transform cursor-pointer duration-100 hover:shadow-inner hover:scale-[1.04] hover:bg-gray-300"
             />
           ) : (
             <BiUpArrowAlt
               onClick={() => setIsWeatherInfoCardOpen(false)}
-              className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full"
+              className="h-6 w-6 text-gray-700 bg-gray-200 rounded-full transition transform cursor-pointer duration-100 hover:shadow-inner hover:scale-[1.04] hover:bg-gray-300"
             />
           )}
         </li>

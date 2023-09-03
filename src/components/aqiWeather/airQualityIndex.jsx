@@ -3,6 +3,7 @@ import { FaWind, FaInfo, FaXmark } from "react-icons/fa6";
 import AqiInfoCard from "./aqiInfoCard";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ComponentAnim from "../utils/componentAnim";
 const AirQualityIndex = ({ airQualityData }) => {
   const [isInfoCardOpen, setIsInfoCardOpen] = useState(false);
   if (!airQualityData) {
@@ -19,7 +20,7 @@ const AirQualityIndex = ({ airQualityData }) => {
   }
 
   return (
-    <div className="bg-white relative shadow-md rounded-xl row-start-2 col-start-2 xl:row-start-3 xl:col-start-1">
+    <ComponentAnim className="bg-white relative shadow-md rounded-xl row-start-2 col-start-2 xl:row-start-3 xl:col-start-1">
       {console.log(aqiInfo.color)}
       <div className="flex flex-col justify-around p-4 md:p-6 lg:p-8 xl:p-10 capitalize text-gray-500 text-md lg:text-lg h-44 md:h-full">
         <div className="flex justify-between">
@@ -28,7 +29,7 @@ const AirQualityIndex = ({ airQualityData }) => {
           <button
             style={{ backgroundColor: `${aqiInfo.color}` }}
             onClick={() => setIsInfoCardOpen(true)}
-            className={`flex items-center h-full py-1 px-3 capitalize rounded-full gap-1 transition duration-100 hover:shadow transform  hover:scale-[1.02] focus:scale-[1.02] active:scale-[0.94]`}
+            className={`flex items-center h-full py-1 px-3 capitalize rounded-full gap-1 font-semibold transition duration-100 hover:shadow transform  hover:scale-[1.02] focus:scale-[1.02] active:scale-[0.94]`}
           >
             <p>{aqiInfo.label}</p>
             <div className="mb-[3px] ">
@@ -54,7 +55,7 @@ const AirQualityIndex = ({ airQualityData }) => {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </ComponentAnim>
   );
 };
 
